@@ -142,7 +142,16 @@ function filterCourses() {
   if (!container) return;
 
   const filtered = COURSES_DATA.filter(c => {
-    const matchCategory = (currentCourseCategory === "all") || (c.category.includes(currentCourseCategory));
+    let matchCategory = false;
+    if (currentCourseCategory === "all") {
+      matchCategory = true;
+    } else if (currentCourseCategory === "국어") {
+      matchCategory = (c.category === "국어"); // 제2외국어/한문 절대 미포함
+    } else if (currentCourseCategory === "사회") {
+      matchCategory = (c.category === "사회" || c.category === "국제");
+    } else {
+      matchCategory = (c.category === currentCourseCategory);
+    }
     const matchType = (currentCourseType === "all") || (c.type === currentCourseType);
     
     let matchQuery = true;

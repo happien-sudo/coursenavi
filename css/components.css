@@ -103,19 +103,32 @@
 /* System Compare Cards */
 .compare-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
   margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .compare-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .compare-card {
   background: #ffffff;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-light);
-  padding: 20px;
+  padding: 16px 14px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .compare-card .area-badge {
