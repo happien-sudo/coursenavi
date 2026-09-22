@@ -414,8 +414,13 @@ function showCourseModal(courseId) {
     const isPlanned = isSubjectPlanned(course.id);
     modalBody.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 20px;">
-        <div style="background: #f8fafc; padding: 16px; border-radius: 14px; border: 1px solid var(--border-light); font-size: 0.95rem; line-height: 1.65; color: #334155;">
-          ${course.summary}
+        <div style="background: #f8fafc; padding: 18px; border-radius: 14px; border: 1.5px solid #bae6fd; font-size: 0.95rem; line-height: 1.7; color: #1e293b;">
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 800; color: #0284c7; margin-bottom: 8px;">
+            <span>📋</span> 과목 소개 (부천교육지원청 '2026 과목선택 나침반' 원문)
+          </div>
+          <div style="letter-spacing: -0.01em; font-weight: 500;">
+            ${course.summary}
+          </div>
         </div>
 
         <!-- 평가 정보 & 수능 정보 -->
