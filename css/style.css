@@ -85,28 +85,80 @@ body {
   background: #94a3b8;
 }
 
-/* Header & Official Source Bar */
-.top-source-banner {
-  background: linear-gradient(90deg, #0284c7 0%, #38bdf8 50%, #818cf8 100%);
+/* Header & Brand Banner */
+.top-compass-banner {
+  background: linear-gradient(90deg, #0284c7 0%, #0ea5e9 45%, #38bdf8 100%);
   color: #ffffff;
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 8px 16px;
+  padding: 10px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  letter-spacing: -0.01em;
-  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.22);
   z-index: 100;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.top-source-banner .source-tag {
+.top-compass-banner:hover {
+  filter: brightness(1.03);
+}
+
+.top-compass-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.top-compass-container .compass-icon-badge {
+  width: 34px;
+  height: 34px;
+  font-size: 1.25rem;
   background: rgba(255, 255, 255, 0.22);
-  padding: 2px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-compass-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.top-compass-text .brand-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.top-compass-text .brand-title .year-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: #ffffff;
+  color: #0284c7;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.top-compass-text .brand-divider {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 300;
+}
+
+.top-compass-text .brand-subtitle {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: -0.2px;
 }
 
 header.main-header {
@@ -122,11 +174,22 @@ header.main-header {
 .header-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 12px 24px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+}
+
+.header-container.centered-nav {
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.header-container.centered-nav .nav-tabs {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .logo-wrap {

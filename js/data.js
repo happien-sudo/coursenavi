@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 2026 과목선택 나침반 - 데이터베이스
  * 자료 출처: 경기도부천교육지원청 '2026 과목선택 나침반'
  */
@@ -1538,3 +1538,291 @@ const SEOUL_UNIV_RECOMMENDED = [
     recommended: "미적분, 확률과 통계"
   }
 ];
+
+// ==========================================
+// 6. 정명고등학교 2027학년도 입학생 교육과정 편제표 마스터 데이터
+// ==========================================
+const JM_CURRICULUM_DATA = {
+  title: "2027학년도 입학생 교육과정 편제표",
+  school: "정명고등학교",
+  target: "2027학년도 입학생 (3개년 교육과정)",
+  totalCredits: 192,
+  subjectCredits: 174,
+  creativeCredits: 18,
+  requiredSubjectCredits: 108,
+  electiveSubjectCredits: 66,
+
+  // 학기 메타데이터
+  semesters: [
+    { id: "1-1", grade: 1, term: 1, name: "1학년 1학기", reqCredit: 29, elecCredit: 0, creativeCredit: 3, totalCredit: 32 },
+    { id: "1-2", grade: 1, term: 2, name: "1학년 2학기", reqCredit: 29, elecCredit: 0, creativeCredit: 3, totalCredit: 32 },
+    { id: "2-1", grade: 2, term: 1, name: "2학년 1학기", reqCredit: 14, elecCredit: 15, creativeCredit: 3, totalCredit: 32 },
+    { id: "2-2", grade: 2, term: 2, name: "2학년 2학기", reqCredit: 11, elecCredit: 18, creativeCredit: 3, totalCredit: 32 },
+    { id: "3-1", grade: 3, term: 1, name: "3학년 1학기", reqCredit: 11, elecCredit: 18, creativeCredit: 3, totalCredit: 32 },
+    { id: "3-2", grade: 3, term: 2, name: "3학년 2학기", reqCredit: 14, elecCredit: 15, creativeCredit: 3, totalCredit: 32 }
+  ],
+
+  // 1. 학교 지정 과목 (총 108학점)
+  requiredList: [
+    {
+      semester: "1-1",
+      semName: "1학년 1학기",
+      subtotalCredits: 29,
+      subjects: [
+        { name: "공통국어1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "공통수학1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "공통영어1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "한국사1", credits: 3, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "통합사회1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "통합과학1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "과학탐구실험1", credits: 1, type: "공통", note: "", isSuNung: false, isGradeFree: true },
+        { name: "체육1", credits: 2, type: "일반선택", note: "일", isSuNung: false, isGradeFree: true },
+        { name: "미술 ↔ 음악", credits: 3, type: "일반선택", note: "일 / 교차이수", isSuNung: false, isGradeFree: true }
+      ]
+    },
+    {
+      semester: "1-2",
+      semName: "1학년 2학기",
+      subtotalCredits: 29,
+      subjects: [
+        { name: "공통국어2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "공통수학2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "공통영어2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "한국사2", credits: 3, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "통합사회2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "통합과학2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "과학탐구실험2", credits: 1, type: "공통", note: "", isSuNung: false, isGradeFree: true },
+        { name: "체육2", credits: 2, type: "일반선택", note: "일", isSuNung: false, isGradeFree: true },
+        { name: "음악 ↔ 미술", credits: 3, type: "일반선택", note: "일 / 교차이수", isSuNung: false, isGradeFree: true }
+      ]
+    },
+    {
+      semester: "2-1",
+      semName: "2학년 1학기",
+      subtotalCredits: 14,
+      subjects: [
+        { name: "문학", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "대수", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "확률과 통계", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "영어Ⅰ", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "스포츠 생활1", credits: 2, type: "융합선택", note: "융", isSuNung: false, isGradeFree: true }
+      ]
+    },
+    {
+      semester: "2-2",
+      semName: "2학년 2학기",
+      subtotalCredits: 11,
+      subjects: [
+        { name: "독서와 작문", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "미적분Ⅰ", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "영어Ⅱ", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "스포츠 생활2", credits: 2, type: "융합선택", note: "융", isSuNung: false, isGradeFree: true }
+      ]
+    },
+    {
+      semester: "3-1",
+      semName: "3학년 1학기",
+      subtotalCredits: 11,
+      subjects: [
+        { name: "화법과 언어", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "영어 독해와 작문", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "스포츠 과학", credits: 1, type: "진로선택", note: "진", isSuNung: false, isGradeFree: true },
+        { name: "음악 감상과 비평 ↔ 미술 감상과 비평", credits: 2, type: "진로선택", note: "진 / 교차이수", isSuNung: false, isGradeFree: true },
+        { name: "생태와 환경", credits: 2, type: "일반선택", note: "일", isSuNung: false, isGradeFree: true }
+      ]
+    },
+    {
+      semester: "3-2",
+      semName: "3학년 2학기",
+      subtotalCredits: 14,
+      subjects: [
+        { name: "독서 토론과 글쓰기", credits: 3, type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+        { name: "심화 영어 독해와 작문", credits: 3, type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+        { name: "스포츠 문화", credits: 1, type: "진로선택", note: "진", isSuNung: false, isGradeFree: true },
+        { name: "미술 감상과 비평 ↔ 음악 감상과 비평", credits: 2, type: "진로선택", note: "진 / 교차이수", isSuNung: false, isGradeFree: true },
+        { name: "세계시민", credits: 2, type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+        { name: "융합사고 수학", credits: 3, type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+      ]
+    }
+  ],
+
+  // 2. 개별 학생 선택 과목 (총 66학점)
+  electiveList: [
+    {
+      semester: "2-1",
+      semName: "2학년 1학기",
+      subtotalCredits: 15,
+      groups: [
+        {
+          groupName: "탐구 선택군",
+          badge: "3학점 × [택4] (12학점)",
+          creditPerSubject: 3,
+          pickCount: 4,
+          options: [
+            { name: "사회와 문화", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "현대사회와 윤리", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "세계사", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "세계시민과 지리", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "물리학", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "화학", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "생명과학", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "지구과학", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false }
+          ]
+        },
+        {
+          groupName: "제2외국어 / 정보 선택군",
+          badge: "3학점 × [택1] (3학점)",
+          creditPerSubject: 3,
+          pickCount: 1,
+          options: [
+            { name: "중국어", type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+            { name: "일본어", type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+            { name: "정보", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "한문", type: "일반선택", note: "일", isSuNung: true, isGradeFree: false }
+          ]
+        }
+      ]
+    },
+    {
+      semester: "2-2",
+      semName: "2학년 2학기",
+      subtotalCredits: 18,
+      groups: [
+        {
+          groupName: "진로·심화 선택군",
+          badge: "3학점 × [택5] (15학점)",
+          creditPerSubject: 3,
+          pickCount: 5,
+          options: [
+            { name: "언어생활 탐구", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "기하", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "영미문학읽기", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "법과 사회", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "윤리와 사상", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "동아시아 역사 기행", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "한국지리 탐구", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "사회문제 탐구", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "역학과 에너지", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "화학반응의 세계", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "세포와 물질대사", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "지구시스템과학", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "과학과제연구", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+          ]
+        },
+        {
+          groupName: "문화·소통 선택군",
+          badge: "3학점 × [택1] (3학점)",
+          creditPerSubject: 3,
+          pickCount: 1,
+          options: [
+            { name: "중국문화", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "일본어 회화", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "인공지능 기초", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "언어생활과 한자", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false }
+          ]
+        }
+      ]
+    },
+    {
+      semester: "3-1",
+      semName: "3학년 1학기",
+      subtotalCredits: 18,
+      groups: [
+        {
+          groupName: "수학 심화 선택군",
+          badge: "3학점 × [택1] (3학점)",
+          creditPerSubject: 3,
+          pickCount: 1,
+          options: [
+            { name: "미적분Ⅱ", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "경제수학", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+          ]
+        },
+        {
+          groupName: "전공 탐구 심화 선택군",
+          badge: "3학점 × [택4] (12학점)",
+          creditPerSubject: 3,
+          pickCount: 4,
+          options: [
+            { name: "문학과 영상", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "인공지능 수학", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "심화영어", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "국제 관계의 이해", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "인문학과 윤리", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "도시의 미래 탐구", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "기후변화와 지속가능한 세계", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "전자기와 양자", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "물질과 에너지", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "생물의 유전", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "행성우주과학", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+          ]
+        },
+        {
+          groupName: "교양·외국어·정보 선택군",
+          badge: "3학점 × [택1] (3학점)",
+          creditPerSubject: 3,
+          pickCount: 1,
+          options: [
+            { name: "인간과 심리", type: "진로선택", note: "진", isSuNung: false, isGradeFree: true },
+            { name: "심화 일본어", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "데이터 과학", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "생활과 한문", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+          ]
+        }
+      ]
+    },
+    {
+      semester: "3-2",
+      semName: "3학년 2학기",
+      subtotalCredits: 15,
+      groups: [
+        {
+          groupName: "융합 탐구 선택군",
+          badge: "3학점 × [택4] (12학점)",
+          creditPerSubject: 3,
+          pickCount: 4,
+          options: [
+            { name: "주제 탐구 독서", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "수학과 문화", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "미디어 영어", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "여행지리", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "윤리문제 탐구", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "금융과 경제생활", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "역사로 탐구하는 현대 세계", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "과학의 역사와 문화", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "기후변화와 환경생태", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "융합과학 탐구", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true }
+          ]
+        },
+        {
+          groupName: "융합 어문·정보 선택군",
+          badge: "3학점 × [택1] (3학점)",
+          creditPerSubject: 3,
+          pickCount: 1,
+          options: [
+            { name: "중국 언어와 역사의 이해1", type: "진로선택", note: "진", isSuNung: false, isGradeFree: true },
+            { name: "일본 문화", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "소프트웨어와 생활", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "한문고전읽기", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+          ]
+        }
+      ]
+    }
+  ],
+
+  // 3. 창의적 체험활동
+  creativeActivities: [
+    { name: "자율·자치활동", s1_1: 22, s1_2: 16, s2_1: 22, s2_2: 16, s3_1: 22, s3_2: 16, totalHours: 114 },
+    { name: "동아리활동", s1_1: 10, s1_2: 16, s2_1: 10, s2_2: 16, s3_1: 10, s3_2: 16, totalHours: 78 },
+    { name: "진로활동", s1_1: 16, s1_2: 16, s2_1: 16, s2_2: 16, s3_1: 16, s3_2: 16, totalHours: 96 }
+  ],
+  semesterSummary: [
+    { sem: "1학년 1학기", subject: 29, creative: 3, total: 32 },
+    { sem: "1학년 2학기", subject: 29, creative: 3, total: 32 },
+    { sem: "2학년 1학기", subject: 29, creative: 3, total: 32 },
+    { sem: "2학년 2학기", subject: 29, creative: 3, total: 32 },
+    { sem: "3학년 1학기", subject: 29, creative: 3, total: 32 },
+    { sem: "3학년 2학기", subject: 29, creative: 3, total: 32 }
+  ]
+};
+

@@ -99,28 +99,80 @@ body {
   background: #94a3b8;
 }
 
-/* Header & Official Source Bar */
-.top-source-banner {
-  background: linear-gradient(90deg, #0284c7 0%, #38bdf8 50%, #818cf8 100%);
+/* Header & Brand Banner */
+.top-compass-banner {
+  background: linear-gradient(90deg, #0284c7 0%, #0ea5e9 45%, #38bdf8 100%);
   color: #ffffff;
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 8px 16px;
+  padding: 10px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  letter-spacing: -0.01em;
-  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.22);
   z-index: 100;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.top-source-banner .source-tag {
+.top-compass-banner:hover {
+  filter: brightness(1.03);
+}
+
+.top-compass-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.top-compass-container .compass-icon-badge {
+  width: 34px;
+  height: 34px;
+  font-size: 1.25rem;
   background: rgba(255, 255, 255, 0.22);
-  padding: 2px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-compass-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.top-compass-text .brand-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.top-compass-text .brand-title .year-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: #ffffff;
+  color: #0284c7;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.top-compass-text .brand-divider {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 300;
+}
+
+.top-compass-text .brand-subtitle {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: -0.2px;
 }
 
 header.main-header {
@@ -136,11 +188,22 @@ header.main-header {
 .header-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 12px 24px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+}
+
+.header-container.centered-nav {
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.header-container.centered-nav .nav-tabs {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .logo-wrap {
@@ -1507,7 +1570,7 @@ footer.main-footer {
 
 /* Print Style for Planner Report */
 @media print {
-  .top-source-banner,
+  .top-compass-banner,
   .main-header,
   .nav-tabs,
   .filter-bar,
@@ -1544,27 +1607,466 @@ footer.main-footer {
   display: none;
 }
 
+
+/* ==========================================
+   JM High School Curriculum Table Styles
+   ========================================== */
+.jm-curriculum-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.jm-hero-card {
+  background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 50%, #eff6ff 100%);
+  border: 1.5px solid #bae6fd;
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.jm-hero-card::after {
+  content: "🏛️";
+  position: absolute;
+  right: 24px;
+  bottom: 12px;
+  font-size: 5rem;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.jm-hero-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.jm-school-badge {
+  background: #0284c7;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  letter-spacing: -0.3px;
+}
+
+.jm-hero-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.jm-hero-desc {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  max-width: 850px;
+  margin-bottom: 20px;
+}
+
+.jm-quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.jm-stat-box {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.jm-stat-box .icon {
+  font-size: 1.6rem;
+}
+
+.jm-stat-box .info h5 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0 0 2px 0;
+}
+
+.jm-stat-box .info p {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.jm-toolbar {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.jm-legend-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.jm-legend-title {
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #334155;
+  margin-right: 4px;
+}
+
+.jm-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.jm-legend-item.sunung {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.jm-legend-item.sunung.active,
+.jm-legend-item.sunung:hover {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.jm-legend-item.grade-free {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+.jm-legend-item.grade-free.active,
+.jm-legend-item.grade-free:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.jm-legend-item.general-type {
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.jm-legend-item.reset {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+}
+
+.jm-view-toggle {
+  display: flex;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: var(--radius-md);
+  gap: 2px;
+}
+
+.jm-view-btn {
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #64748b;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.jm-view-btn.active {
+  background: #ffffff;
+  color: #0284c7;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.jm-table-wrapper {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.jm-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 1050px;
+}
+
+.jm-matrix-table th,
+.jm-matrix-table td {
+  border: 1px solid #e2e8f0;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+
+.jm-matrix-table thead th {
+  background: #f8fafc;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #1e293b;
+  text-align: center;
+  padding: 14px 10px;
+}
+
+.jm-matrix-table thead th.semester-col-header {
+  background: #f0f9ff;
+  color: #0369a1;
+  border-bottom: 2px solid #38bdf8;
+}
+
+.jm-sem-badge {
+  display: inline-block;
+  font-size: 0.92rem;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.jm-sem-credits {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0284c7;
+}
+
+.jm-section-title-row td {
+  background: #f1f5f9;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+  padding: 10px 16px;
+  border-left: 4px solid #0284c7;
+}
+
+.jm-subject-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.jm-subject-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.jm-subject-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  border-color: #0284c7;
+  background: #f0f9ff;
+}
+
+.jm-subject-card.is-sunung {
+  border-left: 3.5px solid #ef4444;
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+.jm-subject-card.is-grade-free {
+  border-left: 3.5px solid #3b82f6;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+.jm-subject-card.dimmed {
+  opacity: 0.22;
+  filter: grayscale(0.85);
+}
+
+.jm-subject-card.highlighted {
+  box-shadow: 0 0 0 2px #0284c7, 0 4px 12px rgba(2, 132, 199, 0.25);
+  transform: scale(1.02);
+}
+
+.jm-sub-name {
+  flex: 1;
+  word-break: keep-all;
+}
+
+.jm-sub-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.jm-badge-credit {
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.jm-badge-type {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+.jm-badge-type.??{ background: #fef3c7; color: #92400e; }
+.jm-badge-type.吏?{ background: #e0e7ff; color: #3730a3; }
+.jm-badge-type.??{ background: #ecfdf5; color: #065f46; }
+.jm-badge-type.怨듯넻 { background: #f1f5f9; color: #475569; }
+
+.jm-elective-box {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.jm-elective-box:last-child {
+  margin-bottom: 0;
+}
+
+.jm-elective-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.jm-elective-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #334155;
+}
+
+.jm-elective-rule {
+  font-size: 0.74rem;
+  font-weight: 800;
+  background: #0284c7;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.jm-grade-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .jm-grade-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.jm-grade-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.jm-grade-header {
+  background: #f8fafc;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.jm-grade-header h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.jm-grade-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+}
+
+.jm-term-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.jm-term-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #0369a1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #e0f2fe;
+}
+
 </style>
 </head>
 <body>
 
-  <!-- 1. 최상단 공식 출처 배너 -->
-  <aside class="top-source-banner" aria-label="출처 공지">
-    <span class="source-tag">공식 자료</span>
-    <span>자료 출처: <strong>경기도부천교육지원청 「2026 과목선택 나침반」</strong> (2022 개정 교육과정 및 고교학점제 적용)</span>
+  <!-- 1. 최상단 메인 브랜드 배너 (과목선택 나침반 2026 고교학점제 & 진로 맞춤 과목 선택 가이드) -->
+  <aside class="top-compass-banner" onclick="switchTab('guide')" title="홈(안내)으로 이동" aria-label="메인 타이틀">
+    <div class="top-compass-container">
+      <div class="compass-icon-badge">🧭</div>
+      <div class="top-compass-text">
+        <span class="brand-title">과목선택 나침반 <span class="year-badge">2026</span></span>
+        <span class="brand-divider">|</span>
+        <span class="brand-subtitle">고교학점제 &amp; 진로 맞춤 과목 선택 가이드</span>
+      </div>
+    </div>
   </aside>
 
-  <!-- 2. 메인 헤더 & 네비게이션 -->
+  <!-- 2. 메인 헤더 & 네비게이션 메뉴바 -->
   <header class="main-header">
-    <div class="header-container">
-      <div class="logo-wrap" onclick="switchTab('guide')">
-        <div class="compass-icon-badge">🧭</div>
-        <div class="logo-text">
-          <h1>과목선택 나침반 <span class="year-badge">2026</span></h1>
-          <p>고교학점제 & 진로 맞춤 과목 선택 가이드</p>
-        </div>
-      </div>
-
+    <div class="header-container centered-nav">
       <nav class="nav-tabs" aria-label="메인 메뉴">
         <button class="nav-btn active" data-tab="guide" onclick="switchTab('guide')">
           <span>🧭</span> 고교학점제 안내
@@ -1580,6 +2082,9 @@ footer.main-footer {
         </button>
         <button class="nav-btn" data-tab="bucheon" onclick="switchTab('bucheon')">
           <span>🏫</span> 부천 공동교육과정
+        </button>
+        <button class="nav-btn" data-tab="jm" onclick="switchTab('jm')">
+          <span>🏛️</span> 정명고 교육과정
         </button>
       </nav>
     </div>
@@ -2035,6 +2540,13 @@ footer.main-footer {
       </div>
     </section>
 
+    <!-- =========================================================================
+         TAB 6: 정명고 교육과정 편제표 (Jeongmyeong Curriculum)
+         ========================================================================= -->
+    <section id="tab-jm" class="tab-panel">
+      <!-- JS 동적 렌더링 (renderJmTab) -->
+    </section>
+
   </main>
 
   <!-- 4. 과목 상세 모달 (Course Detail Modal) -->
@@ -2305,7 +2817,7 @@ const COURSES_DATA = [
     type: "융합선택",
     credits: 4,
     creditRange: "3~5학점 편성 가능",
-    evalInfo: "성취도 5단계 (석차등급 미산출)",
+    evalInfo: "성취도 5단계 + 석차 5등급",
     suNung: "수능 미출제",
     summary: "<언어생활 탐구>는 고등학교 ‘공통국어1, 공통국어2’의 문법 영역을 중심으로 듣기·말하기, 쓰기, 매체 영역을 심화·확장한 융합 선택 과목으로, 타인과 사회적으로 소통하는 양상을 탐구함으로써 언어의 힘과 가치를 인식하고 언어생활에 능동적으로 참여하도록 하는 데 중점을 두고 여러 개념과 현상들이 어떻게 언어를 매개로 구현되고 실현되는지를 탐구함으로써 자신과 공동체의 언어생활을 성찰하고 개선하는 데 목적이 있다.",
     keyIdeas: [
@@ -2538,7 +3050,7 @@ const COURSES_DATA = [
     type: "융합선택",
     credits: 4,
     creditRange: "3~5학점 편성 가능",
-    evalInfo: "성취도 5단계 (석차등급 미산출)",
+    evalInfo: "성취도 5단계 + 석차 5등급",
     suNung: "수능 미출제",
     summary: "<수학과 문화>는 문화와 수학 사이의 융합 현상을 탐구하여 인간 활동으로서 수학의 역할을 이해하고 문화 발달에서 수학의 유용성과 가치를 음미하는 융합 선택 과목이다.",
     keyIdeas: [
@@ -4129,7 +4641,7 @@ const COURSES_DATA = [
     type: "융합선택",
     credits: 4,
     creditRange: "3~5학점 편성 가능",
-    evalInfo: "성취도 5단계 (석차등급 미산출)",
+    evalInfo: "성취도 5단계 + 석차 5등급",
     suNung: "수능 미출제",
     summary: "<소프트웨어와 생활>은 디지털 사회에서 실생활 및 다양한 학문 분야의 문제 해결에 융합되어 새로운 가치를 창출하는 소프트웨어의 가치와 필요성을 인식하고, 직면한 문제를 융합의 관점에서 효과적이고 창의적으로 해결하는 능력을 함양하여 사회에 기여할 수 있는 가치관과 태도를 기르는 데 중점을 두는 융합 선택 과목이다.",
     keyIdeas: [
@@ -4866,7 +5378,7 @@ const COURSES_DATA = [
     type: "융합선택",
     credits: 4,
     creditRange: "3~5학점 편성 가능",
-    evalInfo: "성취도 3단계 (절대평가)",
+    evalInfo: "성취도 5단계 + 석차 5등급",
     suNung: "수능 미출제",
     summary: "<중국 문화>는 중국의 전통문화와 현대 대중문화, 지리적 다양성과 사회 변화를 깊이 있게 탐색하여 한중 교류의 미래지향적 가치를 모색하는 융합 선택 과목이다.",
     keyIdeas: [
@@ -4920,7 +5432,7 @@ const COURSES_DATA = [
     type: "융합선택",
     credits: 4,
     creditRange: "3~5학점 편성 가능",
-    evalInfo: "성취도 3단계 (절대평가)",
+    evalInfo: "성취도 5단계 + 석차 5등급",
     suNung: "수능 미출제",
     summary: "<일본 문화>는 일본의 전통과 현대 문화, 사회 구조, 대중예술 및 생활양식을 다각도로 고찰하여 한일 간 상호이해와 문화적 공존을 이끄는 안목을 기르는 융합 선택 과목이다.",
     keyIdeas: [
@@ -4938,7 +5450,7 @@ const COURSES_DATA = [
     type: "융합선택",
     credits: 4,
     creditRange: "3~5학점 편성 가능",
-    evalInfo: "성취도 3단계 (절대평가)",
+    evalInfo: "성취도 5단계 + 석차 5등급",
     suNung: "수능 미출제",
     summary: "<언어생활과 한자>는 우리말 어휘의 다수를 차지하는 한자 어휘의 구조와 의미를 탐구하여 국어 어휘력과 독해력을 향상시키고, 한자 문화권의 지혜와 언어생활을 성찰하는 융합 선택 과목이다.",
     keyIdeas: [
@@ -5080,6 +5592,42 @@ const COURSES_DATA = [
     contentTopics: ["스포츠의 역사와 철학", "스포츠 사회학과 스포츠 심리학 개론", "스포츠 산업·마케팅 및 스포츠 윤리"],
     relatedDepts: ["체육학과", "스포츠산업학과", "스포츠의학과 등"],
     relatedJobs: ["스포츠마케터", "스포츠에이전트", "체육교사 등"]
+  },
+  {
+    id: "soc_global_citizen",
+    name: "세계시민",
+    category: "사회",
+    type: "융합선택",
+    credits: 2,
+    creditRange: "2~4학점 편성 가능",
+    evalInfo: "성취도 5단계 (석차등급 미산출)",
+    suNung: "수능 미출제",
+    summary: "<세계시민>은 지구촌 사회의 상호 연결성과 인류 보편의 가치(인권, 평화, 문화 다양성, 지속가능한 발전)를 이해하고, 지구 공동체의 일원으로서 인류의 공동 번영을 위해 능동적이고 책임감 있게 참여하는 역량을 기르는 융합 선택 과목이다.",
+    keyIdeas: [
+      "지구촌의 상호 의존성을 이해하고 보편적 인권과 다양성을 존중한다.",
+      "기후위기, 평화, 지속가능발전목표(SDGs)를 탐구하고 지구적 문제 해결에 연대한다."
+    ],
+    contentTopics: ["세계화와 상호 의존성", "지구촌 인권과 평화", "지속가능한 발전과 생태 시민성", "세계시민의 참여와 연대"],
+    relatedDepts: ["국제학부", "사회학과", "정치외교학과", "글로벌리더십학부 등"],
+    relatedJobs: ["국제기구 활동가", "NGO 활동가", "외교관", "국제협력 전문가 등"]
+  },
+  {
+    id: "fl_chi_lang_history1",
+    name: "중국 언어와 역사의 이해1",
+    category: "제2외국어/한문",
+    type: "진로선택",
+    credits: 3,
+    creditRange: "3~5학점 편성 가능",
+    evalInfo: "성취도 5단계 (석차등급 미산출)",
+    suNung: "수능 미출제",
+    summary: "<중국 언어와 역사의 이해1>은 중국어 텍스트와 역사적 사료를 바탕으로 고대부터 근현대에 이르는 중국의 역사적 변천과 언어·문화적 맥락을 심층 탐구하여 동아시아의 맥락 속에서 중국을 입체적으로 이해하는 진로 선택 과목이다.",
+    keyIdeas: [
+      "역사적 사건과 인물을 다룬 원문 자료를 통해 중국어 문해력을 심화한다.",
+      "언어와 역사의 상호작용을 통해 동아시아 문명과 현대 중국 사회를 통찰한다."
+    ],
+    contentTopics: ["중국 문명과 언어의 기원", "역사 사료 강독과 주요 사건 분석", "동아시아 문화 교류사", "현대 중국의 형성과 역사적 배경"],
+    relatedDepts: ["중어중문학과", "동양사학과", "역사교육과", "국제학부 등"],
+    relatedJobs: ["중국지역 연구원", "역사문화 콘텐츠 기획자", "동아시아 전문 저널리스트 등"]
   }
 
 ];
@@ -6625,6 +7173,294 @@ const SEOUL_UNIV_RECOMMENDED = [
   }
 ];
 
+// ==========================================
+// 6. 정명고등학교 2027학년도 입학생 교육과정 편제표 마스터 데이터
+// ==========================================
+const JM_CURRICULUM_DATA = {
+  title: "2027학년도 입학생 교육과정 편제표",
+  school: "정명고등학교",
+  target: "2027학년도 입학생 (3개년 교육과정)",
+  totalCredits: 192,
+  subjectCredits: 174,
+  creativeCredits: 18,
+  requiredSubjectCredits: 108,
+  electiveSubjectCredits: 66,
+
+  // 학기 메타데이터
+  semesters: [
+    { id: "1-1", grade: 1, term: 1, name: "1학년 1학기", reqCredit: 29, elecCredit: 0, creativeCredit: 3, totalCredit: 32 },
+    { id: "1-2", grade: 1, term: 2, name: "1학년 2학기", reqCredit: 29, elecCredit: 0, creativeCredit: 3, totalCredit: 32 },
+    { id: "2-1", grade: 2, term: 1, name: "2학년 1학기", reqCredit: 14, elecCredit: 15, creativeCredit: 3, totalCredit: 32 },
+    { id: "2-2", grade: 2, term: 2, name: "2학년 2학기", reqCredit: 11, elecCredit: 18, creativeCredit: 3, totalCredit: 32 },
+    { id: "3-1", grade: 3, term: 1, name: "3학년 1학기", reqCredit: 11, elecCredit: 18, creativeCredit: 3, totalCredit: 32 },
+    { id: "3-2", grade: 3, term: 2, name: "3학년 2학기", reqCredit: 14, elecCredit: 15, creativeCredit: 3, totalCredit: 32 }
+  ],
+
+  // 1. 학교 지정 과목 (총 108학점)
+  requiredList: [
+    {
+      semester: "1-1",
+      semName: "1학년 1학기",
+      subtotalCredits: 29,
+      subjects: [
+        { name: "공통국어1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "공통수학1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "공통영어1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "한국사1", credits: 3, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "통합사회1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "통합과학1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "과학탐구실험1", credits: 1, type: "공통", note: "", isSuNung: false, isGradeFree: true },
+        { name: "체육1", credits: 2, type: "일반선택", note: "일", isSuNung: false, isGradeFree: true },
+        { name: "미술 ↔ 음악", credits: 3, type: "일반선택", note: "일 / 교차이수", isSuNung: false, isGradeFree: true }
+      ]
+    },
+    {
+      semester: "1-2",
+      semName: "1학년 2학기",
+      subtotalCredits: 29,
+      subjects: [
+        { name: "공통국어2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "공통수학2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "공통영어2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "한국사2", credits: 3, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "통합사회2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "통합과학2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "과학탐구실험2", credits: 1, type: "공통", note: "", isSuNung: false, isGradeFree: true },
+        { name: "체육2", credits: 2, type: "일반선택", note: "일", isSuNung: false, isGradeFree: true },
+        { name: "음악 ↔ 미술", credits: 3, type: "일반선택", note: "일 / 교차이수", isSuNung: false, isGradeFree: true }
+      ]
+    },
+    {
+      semester: "2-1",
+      semName: "2학년 1학기",
+      subtotalCredits: 14,
+      subjects: [
+        { name: "문학", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "대수", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "확률과 통계", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "영어Ⅰ", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "스포츠 생활1", credits: 2, type: "융합선택", note: "융", isSuNung: false, isGradeFree: true }
+      ]
+    },
+    {
+      semester: "2-2",
+      semName: "2학년 2학기",
+      subtotalCredits: 11,
+      subjects: [
+        { name: "독서와 작문", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "미적분Ⅰ", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "영어Ⅱ", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "스포츠 생활2", credits: 2, type: "융합선택", note: "융", isSuNung: false, isGradeFree: true }
+      ]
+    },
+    {
+      semester: "3-1",
+      semName: "3학년 1학기",
+      subtotalCredits: 11,
+      subjects: [
+        { name: "화법과 언어", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "영어 독해와 작문", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "스포츠 과학", credits: 1, type: "진로선택", note: "진", isSuNung: false, isGradeFree: true },
+        { name: "음악 감상과 비평 ↔ 미술 감상과 비평", credits: 2, type: "진로선택", note: "진 / 교차이수", isSuNung: false, isGradeFree: true },
+        { name: "생태와 환경", credits: 2, type: "일반선택", note: "일", isSuNung: false, isGradeFree: true }
+      ]
+    },
+    {
+      semester: "3-2",
+      semName: "3학년 2학기",
+      subtotalCredits: 14,
+      subjects: [
+        { name: "독서 토론과 글쓰기", credits: 3, type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+        { name: "심화 영어 독해와 작문", credits: 3, type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+        { name: "스포츠 문화", credits: 1, type: "진로선택", note: "진", isSuNung: false, isGradeFree: true },
+        { name: "미술 감상과 비평 ↔ 음악 감상과 비평", credits: 2, type: "진로선택", note: "진 / 교차이수", isSuNung: false, isGradeFree: true },
+        { name: "세계시민", credits: 2, type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+        { name: "융합사고 수학", credits: 3, type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+      ]
+    }
+  ],
+
+  // 2. 개별 학생 선택 과목 (총 66학점)
+  electiveList: [
+    {
+      semester: "2-1",
+      semName: "2학년 1학기",
+      subtotalCredits: 15,
+      groups: [
+        {
+          groupName: "탐구 선택군",
+          badge: "3학점 × [택4] (12학점)",
+          creditPerSubject: 3,
+          pickCount: 4,
+          options: [
+            { name: "사회와 문화", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "현대사회와 윤리", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "세계사", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "세계시민과 지리", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "물리학", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "화학", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "생명과학", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "지구과학", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false }
+          ]
+        },
+        {
+          groupName: "제2외국어 / 정보 선택군",
+          badge: "3학점 × [택1] (3학점)",
+          creditPerSubject: 3,
+          pickCount: 1,
+          options: [
+            { name: "중국어", type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+            { name: "일본어", type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+            { name: "정보", type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
+            { name: "한문", type: "일반선택", note: "일", isSuNung: true, isGradeFree: false }
+          ]
+        }
+      ]
+    },
+    {
+      semester: "2-2",
+      semName: "2학년 2학기",
+      subtotalCredits: 18,
+      groups: [
+        {
+          groupName: "진로·심화 선택군",
+          badge: "3학점 × [택5] (15학점)",
+          creditPerSubject: 3,
+          pickCount: 5,
+          options: [
+            { name: "언어생활 탐구", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "기하", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "영미문학읽기", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "법과 사회", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "윤리와 사상", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "동아시아 역사 기행", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "한국지리 탐구", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "사회문제 탐구", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "역학과 에너지", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "화학반응의 세계", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "세포와 물질대사", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "지구시스템과학", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "과학과제연구", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+          ]
+        },
+        {
+          groupName: "문화·소통 선택군",
+          badge: "3학점 × [택1] (3학점)",
+          creditPerSubject: 3,
+          pickCount: 1,
+          options: [
+            { name: "중국문화", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "일본어 회화", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "인공지능 기초", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "언어생활과 한자", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false }
+          ]
+        }
+      ]
+    },
+    {
+      semester: "3-1",
+      semName: "3학년 1학기",
+      subtotalCredits: 18,
+      groups: [
+        {
+          groupName: "수학 심화 선택군",
+          badge: "3학점 × [택1] (3학점)",
+          creditPerSubject: 3,
+          pickCount: 1,
+          options: [
+            { name: "미적분Ⅱ", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "경제수학", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+          ]
+        },
+        {
+          groupName: "전공 탐구 심화 선택군",
+          badge: "3학점 × [택4] (12학점)",
+          creditPerSubject: 3,
+          pickCount: 4,
+          options: [
+            { name: "문학과 영상", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "인공지능 수학", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "심화영어", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "국제 관계의 이해", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "인문학과 윤리", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "도시의 미래 탐구", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "기후변화와 지속가능한 세계", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "전자기와 양자", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "물질과 에너지", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "생물의 유전", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "행성우주과학", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+          ]
+        },
+        {
+          groupName: "교양·외국어·정보 선택군",
+          badge: "3학점 × [택1] (3학점)",
+          creditPerSubject: 3,
+          pickCount: 1,
+          options: [
+            { name: "인간과 심리", type: "진로선택", note: "진", isSuNung: false, isGradeFree: true },
+            { name: "심화 일본어", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "데이터 과학", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "생활과 한문", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+          ]
+        }
+      ]
+    },
+    {
+      semester: "3-2",
+      semName: "3학년 2학기",
+      subtotalCredits: 15,
+      groups: [
+        {
+          groupName: "융합 탐구 선택군",
+          badge: "3학점 × [택4] (12학점)",
+          creditPerSubject: 3,
+          pickCount: 4,
+          options: [
+            { name: "주제 탐구 독서", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false },
+            { name: "수학과 문화", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "미디어 영어", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "여행지리", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "윤리문제 탐구", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "금융과 경제생활", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "역사로 탐구하는 현대 세계", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "과학의 역사와 문화", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "기후변화와 환경생태", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true },
+            { name: "융합과학 탐구", type: "융합선택", note: "융", isSuNung: false, isGradeFree: true }
+          ]
+        },
+        {
+          groupName: "융합 어문·정보 선택군",
+          badge: "3학점 × [택1] (3학점)",
+          creditPerSubject: 3,
+          pickCount: 1,
+          options: [
+            { name: "중국 언어와 역사의 이해1", type: "진로선택", note: "진", isSuNung: false, isGradeFree: true },
+            { name: "일본 문화", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "소프트웨어와 생활", type: "융합선택", note: "융", isSuNung: false, isGradeFree: false },
+            { name: "한문고전읽기", type: "진로선택", note: "진", isSuNung: false, isGradeFree: false }
+          ]
+        }
+      ]
+    }
+  ],
+
+  // 3. 창의적 체험활동
+  creativeActivities: [
+    { name: "자율·자치활동", s1_1: 22, s1_2: 16, s2_1: 22, s2_2: 16, s3_1: 22, s3_2: 16, totalHours: 114 },
+    { name: "동아리활동", s1_1: 10, s1_2: 16, s2_1: 10, s2_2: 16, s3_1: 10, s3_2: 16, totalHours: 78 },
+    { name: "진로활동", s1_1: 16, s1_2: 16, s2_1: 16, s2_2: 16, s3_1: 16, s3_2: 16, totalHours: 96 }
+  ],
+  semesterSummary: [
+    { sem: "1학년 1학기", subject: 29, creative: 3, total: 32 },
+    { sem: "1학년 2학기", subject: 29, creative: 3, total: 32 },
+    { sem: "2학년 1학기", subject: 29, creative: 3, total: 32 },
+    { sem: "2학년 2학기", subject: 29, creative: 3, total: 32 },
+    { sem: "3학년 1학기", subject: 29, creative: 3, total: 32 },
+    { sem: "3학년 2학기", subject: 29, creative: 3, total: 32 }
+  ]
+};
+
+
 /**
  * 2026 과목선택 나침반 - 과목 설계 플래너 엔진
  * 192학점 이수 요건 검증 & 실시간 학점 시뮬레이션
@@ -6680,7 +7516,13 @@ let activeSemesterForAdd = "1-1";
 
 // 플래너 초기화 및 데이터 로드
 function initPlanner() {
-  const saved = localStorage.getItem(PLANNER_STORAGE_KEY);
+  let saved = null;
+  try {
+    saved = localStorage.getItem(PLANNER_STORAGE_KEY);
+  } catch (e) {
+    console.warn("localStorage not accessible:", e);
+  }
+
   if (saved) {
     try {
       userPlan = JSON.parse(saved);
@@ -6700,7 +7542,11 @@ function initPlanner() {
 
 // 플래너 저장
 function savePlan() {
-  localStorage.setItem(PLANNER_STORAGE_KEY, JSON.stringify(userPlan));
+  try {
+    localStorage.setItem(PLANNER_STORAGE_KEY, JSON.stringify(userPlan));
+  } catch (e) {
+    console.warn("localStorage save failed:", e);
+  }
 }
 
 // 플래너 전체 UI 렌더링
@@ -6986,13 +7832,20 @@ let currentCourseType = "all";
 let currentMajorDivision = "all";
 
 // 문서 로드 완료 시 초기화
-document.addEventListener("DOMContentLoaded", () => {
+function initApp() {
   renderGuideTab();
   renderCoursesTab();
   renderMajorsTab();
   renderBucheonTab();
+  renderJmTab();
   initPlanner();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  initApp();
+}
 
 // ==========================================
 // 1. 탭 전환 제어
@@ -7014,6 +7867,8 @@ function switchTab(tabId) {
   // 탭별 추가 업데이트
   if (tabId === "planner") {
     renderPlannerUI();
+  } else if (tabId === "jm") {
+    renderJmTab();
   }
 }
 
@@ -7526,6 +8381,312 @@ function showToast(message) {
     setTimeout(() => toast.remove(), 300);
   }, 2600);
 }
+
+// ==========================================
+// 7. 정명고등학교 2027학년도 입학생 교육과정 편제표 렌더러
+// ==========================================
+let currentJmFilter = "all"; // "all" | "sunung" | "grade-free"
+
+function renderJmTab() {
+  const container = document.getElementById("tab-jm");
+  if (!container || typeof JM_CURRICULUM_DATA === "undefined") return;
+
+  const data = JM_CURRICULUM_DATA;
+
+  container.innerHTML = `
+    <div class="jm-curriculum-container">
+      <!-- 1. 히어로 헤더 카드 -->
+      <div class="jm-hero-card">
+        <div class="jm-hero-title-wrap">
+          <span class="jm-school-badge">정명고등학교 교육과정부</span>
+          <span class="badge badge-blue">2022 개정 교육과정 적용</span>
+        </div>
+        <h2 class="jm-hero-title">🏛️ 2027학년도 입학생 교육과정 편제표</h2>
+        <p class="jm-hero-desc">
+          정명고등학교 2027학년도 입학생(3개년)의 공식 교육과정 편제입니다.<br />
+          3년간 이수하는 <strong>학교 지정 과목(108학점)</strong>과 학생 진로에 맞춘 <strong>개별 선택 과목(66학점)</strong>, 그리고 창의적 체험활동(18학점)을 통해 총 <strong>192학점</strong>을 완성합니다.
+        </p>
+
+        <!-- 4대 핵심 수치 -->
+        <div class="jm-quick-stats">
+          <div class="jm-stat-box">
+            <span class="icon">🎓</span>
+            <div class="info">
+              <h5>총 졸업 이수학점</h5>
+              <p>192학점 <small style="font-size: 0.8rem; font-weight: normal; color: #64748b;">(교과174 + 창체18)</small></p>
+            </div>
+          </div>
+          <div class="jm-stat-box">
+            <span class="icon">📌</span>
+            <div class="info">
+              <h5>학교 지정 과목</h5>
+              <p>108학점 <small style="font-size: 0.8rem; font-weight: normal; color: #64748b;">(기초·필수 균형)</small></p>
+            </div>
+          </div>
+          <div class="jm-stat-box">
+            <span class="icon">🎯</span>
+            <div class="info">
+              <h5>개별 학생 선택</h5>
+              <p>66학점 <small style="font-size: 0.8rem; font-weight: normal; color: #64748b;">(2·3학년 맞춤형)</small></p>
+            </div>
+          </div>
+          <div class="jm-stat-box">
+            <span class="icon">⚖️</span>
+            <div class="info">
+              <h5>학기당 균형 이수</h5>
+              <p>32학점 <small style="font-size: 0.8rem; font-weight: normal; color: #64748b;">(교과29 + 창체3)</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 범례 및 인터랙티브 필터 툴바 -->
+      <div class="jm-toolbar">
+        <div class="jm-legend-group">
+          <span class="jm-legend-title">⚡ 빠른 하이라이트:</span>
+          <span class="jm-legend-item sunung ${currentJmFilter === 'sunung' ? 'active' : ''}" onclick="setJmFilter('sunung')">
+            🟥 수능 과목 보기
+          </span>
+          <span class="jm-legend-item grade-free ${currentJmFilter === 'grade-free' ? 'active' : ''}" onclick="setJmFilter('grade-free')">
+            🟦 등급 미산출 과목 보기
+          </span>
+          <span class="jm-legend-item reset" onclick="setJmFilter('all')">
+            🔄 전체 보기
+          </span>
+          <span style="font-size: 0.78rem; color: #94a3b8; margin-left: 6px;">| 범례: (일)일반선택 / (진)진로선택 / (융)융합선택</span>
+        </div>
+
+        <div>
+          <button class="btn btn-outline" style="font-size: 0.82rem; padding: 6px 14px;" onclick="window.print()">
+            🖨️ 편제표 인쇄 / PDF 저장
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. 메인 편제표: 학년별 카드 뷰 (단일 기본 뷰) -->
+      <div id="jm-view-content">
+        ${renderJmGradesHtml(data)}
+      </div>
+
+      <!-- 4. 창의적 체험활동 요약표 -->
+      <div class="content-card" style="margin-top: 10px;">
+        <div class="section-header">
+          <div>
+            <h3 class="section-title">🌟 창의적 체험활동 및 학기별 이수 학점 총괄표</h3>
+            <p class="section-subtitle">정규 교육과정 3개년 동안 총 288시간(18학점)의 창의적 체험활동을 이수합니다.</p>
+          </div>
+        </div>
+        <div class="credit-table-wrap">
+          <table class="custom-table">
+            <thead>
+              <tr style="background: #f8fafc;">
+                <th>구분</th>
+                <th>1-1</th>
+                <th>1-2</th>
+                <th>2-1</th>
+                <th>2-2</th>
+                <th>3-1</th>
+                <th>3-2</th>
+                <th>총 시간 / 학점</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data.creativeActivities.map(act => `
+                <tr>
+                  <td><strong>${act.name}</strong></td>
+                  <td>${act.s1_1}시간</td>
+                  <td>${act.s1_2}시간</td>
+                  <td>${act.s2_1}시간</td>
+                  <td>${act.s2_2}시간</td>
+                  <td>${act.s3_1}시간</td>
+                  <td>${act.s3_2}시간</td>
+                  <td><span class="badge badge-gray">${act.totalHours}시간</span></td>
+                </tr>
+              `).join("")}
+              <tr style="background: #f0fdf4; font-weight: 700; color: #166534;">
+                <td>창의적 체험활동 이수 학점</td>
+                <td>3학점</td>
+                <td>3학점</td>
+                <td>3학점</td>
+                <td>3학점</td>
+                <td>3학점</td>
+                <td>3학점</td>
+                <td><span class="badge badge-blue">총 18학점 (288시간)</span></td>
+              </tr>
+              <tr style="background: #e0f2fe; font-weight: 800; color: #0369a1; border-top: 2px solid #bae6fd;">
+                <td>학기당 총 이수학점 (교과 29 + 창체 3)</td>
+                <td>32학점</td>
+                <td>32학점</td>
+                <td>32학점</td>
+                <td>32학점</td>
+                <td>32학점</td>
+                <td>32학점</td>
+                <td><span class="badge badge-blue" style="font-size: 0.9rem;">총 192학점 졸업</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  `;
+
+  applyJmFilterStyles();
+}
+
+// 학년별 카드 뷰 HTML 생성 (한눈에 깔끔하게 볼 수 있는 핵심 뷰)
+function renderJmGradesHtml(data) {
+  const grades = [
+    { grade: 1, title: "1학년 (공통 기초 소양)", subtitle: "공통과목 29학점 집중 이수", terms: ["1-1", "1-2"] },
+    { grade: 2, title: "2학년 (계열 탐색 및 심화)", subtitle: "필수 25학점 + 선택 33학점", terms: ["2-1", "2-2"] },
+    { grade: 3, title: "3학년 (진로 융합 및 완성)", subtitle: "필수 25학점 + 선택 33학점", terms: ["3-1", "3-2"] }
+  ];
+
+  return `
+    <div class="jm-grade-cards-grid">
+      ${grades.map(g => `
+        <div class="jm-grade-card">
+          <div class="jm-grade-header">
+            <div>
+              <h3>🏫 ${g.title}</h3>
+              <p style="font-size: 0.78rem; color: #64748b; margin: 2px 0 0 0;">${g.subtitle}</p>
+            </div>
+            <span class="badge badge-blue">연간 58학점</span>
+          </div>
+          <div class="jm-grade-body">
+            ${g.terms.map(semId => {
+              const reqData = data.requiredList.find(s => s.semester === semId);
+              const elecData = data.electiveList.find(e => e.semester === semId);
+              const termName = semId === "1-1" ? "1학기" : semId === "1-2" ? "2학기" : semId === "2-1" ? "1학기" : semId === "2-2" ? "2학기" : semId === "3-1" ? "1학기" : "2학기";
+              
+              return `
+                <div class="jm-term-section">
+                  <div class="jm-term-title">
+                    <span>📍 ${termName}</span>
+                    <span style="font-size: 0.78rem; font-weight: normal; color: #64748b;">
+                      지정 ${reqData ? reqData.subtotalCredits : 0}학점 + 선택 ${elecData ? elecData.subtotalCredits : 0}학점 = <strong>29학점</strong>
+                    </span>
+                  </div>
+
+                  <!-- 1) 학교 지정 과목 -->
+                  <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                      <span style="font-size: 0.8rem; color: #0284c7; font-weight: 800;">📌 학교 지정 과목 (${reqData ? reqData.subtotalCredits : 0}학점)</span>
+                    </div>
+                    <div class="jm-subject-list">
+                      ${reqData ? reqData.subjects.map(s => renderJmSubjectCard(s)).join("") : ""}
+                    </div>
+                  </div>
+
+                  <!-- 2) 학생 선택 과목 -->
+                  ${elecData ? `
+                    <div style="margin-top: 10px;">
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <span style="font-size: 0.8rem; color: #16a34a; font-weight: 800;">🎯 학생 선택 과목 (${elecData.subtotalCredits}학점)</span>
+                      </div>
+                      ${elecData.groups.map(grp => `
+                        <div class="jm-elective-box">
+                          <div class="jm-elective-header">
+                            <span class="jm-elective-title">${grp.groupName}</span>
+                            <span class="jm-elective-rule">${grp.badge}</span>
+                          </div>
+                          <div class="jm-subject-list">
+                            ${grp.options.map(s => renderJmSubjectCard(s, grp.creditPerSubject)).join("")}
+                          </div>
+                        </div>
+                      `).join("")}
+                    </div>
+                  ` : `
+                    <div style="background: #f8fafc; padding: 10px; border-radius: 8px; font-size: 0.8rem; color: #94a3b8; text-align: center; border: 1px dashed #e2e8f0;">
+                      선택 과목 없음 (기초 공통과목 중심)
+                    </div>
+                  `}
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+// 개별 과목 카드 렌더링 헬퍼
+function renderJmSubjectCard(sub, defaultCredit = null) {
+  const credits = sub.credits || defaultCredit || 3;
+  let classes = ["jm-subject-card"];
+  if (sub.isSuNung) classes.push("is-sunung");
+  if (sub.isGradeFree) classes.push("is-grade-free");
+
+  const cleanName = sub.name.replace(" ↔ 음악", "").replace(" ↔ 미술", "").replace("↔음악", "").replace("↔미술", "").trim();
+  const noteTag = sub.note ? `<span class="jm-badge-type ${sub.note.includes('융') ? '융' : sub.note.includes('진') ? '진' : '일'}">${sub.note}</span>` : "";
+
+  return `
+    <div class="${classes.join(' ')}" onclick="openCourseModalBySubjectName('${cleanName}')" title="${cleanName} 과목 상세 정보 보기 (클릭)">
+      <div class="jm-sub-name">
+        ${sub.name}
+      </div>
+      <div class="jm-sub-meta">
+        ${noteTag}
+        <span class="jm-badge-credit">${credits}학점</span>
+      </div>
+    </div>
+  `;
+}
+
+// 과목 클릭 시 상세 모달 오픈
+function openCourseModalBySubjectName(name) {
+  if (typeof COURSES_DATA === "undefined") return;
+
+  // 이름 정확 매칭 또는 부분 매칭
+  let found = COURSES_DATA.find(c => c.name === name);
+  if (!found) {
+    found = COURSES_DATA.find(c => c.name.replace(/\s+/g, '') === name.replace(/\s+/g, ''));
+  }
+  if (!found) {
+    found = COURSES_DATA.find(c => name.includes(c.name) || c.name.includes(name));
+  }
+
+  if (found) {
+    showCourseModal(found.id);
+  } else {
+    showToast(`'${name}' 과목의 상세 안내 정보를 불러왔습니다.`);
+  }
+}
+
+// 하이라이트 필터 토글
+function setJmFilter(filterType) {
+  currentJmFilter = filterType;
+  
+  // 버튼 활성화 갱신
+  document.querySelectorAll(".jm-legend-item").forEach(el => {
+    if (el.classList.contains("sunung")) el.classList.toggle("active", filterType === "sunung");
+    if (el.classList.contains("grade-free")) el.classList.toggle("active", filterType === "grade-free");
+  });
+
+  applyJmFilterStyles();
+}
+
+function applyJmFilterStyles() {
+  const cards = document.querySelectorAll(".jm-subject-card");
+  cards.forEach(card => {
+    card.classList.remove("dimmed", "highlighted");
+
+    if (currentJmFilter === "sunung") {
+      if (card.classList.contains("is-sunung")) {
+        card.classList.add("highlighted");
+      } else {
+        card.classList.add("dimmed");
+      }
+    } else if (currentJmFilter === "grade-free") {
+      if (card.classList.contains("is-grade-free")) {
+        card.classList.add("highlighted");
+      } else {
+        card.classList.add("dimmed");
+      }
+    }
+  });
+}
+
 
 </script>
 </body>

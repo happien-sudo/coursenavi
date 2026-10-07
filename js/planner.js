@@ -53,7 +53,13 @@ let activeSemesterForAdd = "1-1";
 
 // 플래너 초기화 및 데이터 로드
 function initPlanner() {
-  const saved = localStorage.getItem(PLANNER_STORAGE_KEY);
+  let saved = null;
+  try {
+    saved = localStorage.getItem(PLANNER_STORAGE_KEY);
+  } catch (e) {
+    console.warn("localStorage not accessible:", e);
+  }
+
   if (saved) {
     try {
       userPlan = JSON.parse(saved);
@@ -73,7 +79,11 @@ function initPlanner() {
 
 // 플래너 저장
 function savePlan() {
-  localStorage.setItem(PLANNER_STORAGE_KEY, JSON.stringify(userPlan));
+  try {
+    localStorage.setItem(PLANNER_STORAGE_KEY, JSON.stringify(userPlan));
+  } catch (e) {
+    console.warn("localStorage save failed:", e);
+  }
 }
 
 // 플래너 전체 UI 렌더링

@@ -9,13 +9,20 @@ let currentCourseType = "all";
 let currentMajorDivision = "all";
 
 // 문서 로드 완료 시 초기화
-document.addEventListener("DOMContentLoaded", () => {
+function initApp() {
   renderGuideTab();
   renderCoursesTab();
   renderMajorsTab();
   renderBucheonTab();
+  renderJmTab();
   initPlanner();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  initApp();
+}
 
 // ==========================================
 // 1. 탭 전환 제어
@@ -37,6 +44,8 @@ function switchTab(tabId) {
   // 탭별 추가 업데이트
   if (tabId === "planner") {
     renderPlannerUI();
+  } else if (tabId === "jm") {
+    renderJmTab();
   }
 }
 
@@ -549,3 +558,309 @@ function showToast(message) {
     setTimeout(() => toast.remove(), 300);
   }, 2600);
 }
+
+// ==========================================
+// 7. 정명고등학교 2027학년도 입학생 교육과정 편제표 렌더러
+// ==========================================
+let currentJmFilter = "all"; // "all" | "sunung" | "grade-free"
+
+function renderJmTab() {
+  const container = document.getElementById("tab-jm");
+  if (!container || typeof JM_CURRICULUM_DATA === "undefined") return;
+
+  const data = JM_CURRICULUM_DATA;
+
+  container.innerHTML = `
+    <div class="jm-curriculum-container">
+      <!-- 1. 히어로 헤더 카드 -->
+      <div class="jm-hero-card">
+        <div class="jm-hero-title-wrap">
+          <span class="jm-school-badge">정명고등학교 교육과정부</span>
+          <span class="badge badge-blue">2022 개정 교육과정 적용</span>
+        </div>
+        <h2 class="jm-hero-title">🏛️ 2027학년도 입학생 교육과정 편제표</h2>
+        <p class="jm-hero-desc">
+          정명고등학교 2027학년도 입학생(3개년)의 공식 교육과정 편제입니다.<br />
+          3년간 이수하는 <strong>학교 지정 과목(108학점)</strong>과 학생 진로에 맞춘 <strong>개별 선택 과목(66학점)</strong>, 그리고 창의적 체험활동(18학점)을 통해 총 <strong>192학점</strong>을 완성합니다.
+        </p>
+
+        <!-- 4대 핵심 수치 -->
+        <div class="jm-quick-stats">
+          <div class="jm-stat-box">
+            <span class="icon">🎓</span>
+            <div class="info">
+              <h5>총 졸업 이수학점</h5>
+              <p>192학점 <small style="font-size: 0.8rem; font-weight: normal; color: #64748b;">(교과174 + 창체18)</small></p>
+            </div>
+          </div>
+          <div class="jm-stat-box">
+            <span class="icon">📌</span>
+            <div class="info">
+              <h5>학교 지정 과목</h5>
+              <p>108학점 <small style="font-size: 0.8rem; font-weight: normal; color: #64748b;">(기초·필수 균형)</small></p>
+            </div>
+          </div>
+          <div class="jm-stat-box">
+            <span class="icon">🎯</span>
+            <div class="info">
+              <h5>개별 학생 선택</h5>
+              <p>66학점 <small style="font-size: 0.8rem; font-weight: normal; color: #64748b;">(2·3학년 맞춤형)</small></p>
+            </div>
+          </div>
+          <div class="jm-stat-box">
+            <span class="icon">⚖️</span>
+            <div class="info">
+              <h5>학기당 균형 이수</h5>
+              <p>32학점 <small style="font-size: 0.8rem; font-weight: normal; color: #64748b;">(교과29 + 창체3)</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 범례 및 인터랙티브 필터 툴바 -->
+      <div class="jm-toolbar">
+        <div class="jm-legend-group">
+          <span class="jm-legend-title">⚡ 빠른 하이라이트:</span>
+          <span class="jm-legend-item sunung ${currentJmFilter === 'sunung' ? 'active' : ''}" onclick="setJmFilter('sunung')">
+            🟥 수능 과목 보기
+          </span>
+          <span class="jm-legend-item grade-free ${currentJmFilter === 'grade-free' ? 'active' : ''}" onclick="setJmFilter('grade-free')">
+            🟦 등급 미산출 과목 보기
+          </span>
+          <span class="jm-legend-item reset" onclick="setJmFilter('all')">
+            🔄 전체 보기
+          </span>
+          <span style="font-size: 0.78rem; color: #94a3b8; margin-left: 6px;">| 범례: (일)일반선택 / (진)진로선택 / (융)융합선택</span>
+        </div>
+
+        <div>
+          <button class="btn btn-outline" style="font-size: 0.82rem; padding: 6px 14px;" onclick="window.print()">
+            🖨️ 편제표 인쇄 / PDF 저장
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. 메인 편제표: 학년별 카드 뷰 (단일 기본 뷰) -->
+      <div id="jm-view-content">
+        ${renderJmGradesHtml(data)}
+      </div>
+
+      <!-- 4. 창의적 체험활동 요약표 -->
+      <div class="content-card" style="margin-top: 10px;">
+        <div class="section-header">
+          <div>
+            <h3 class="section-title">🌟 창의적 체험활동 및 학기별 이수 학점 총괄표</h3>
+            <p class="section-subtitle">정규 교육과정 3개년 동안 총 288시간(18학점)의 창의적 체험활동을 이수합니다.</p>
+          </div>
+        </div>
+        <div class="credit-table-wrap">
+          <table class="custom-table">
+            <thead>
+              <tr style="background: #f8fafc;">
+                <th>구분</th>
+                <th>1-1</th>
+                <th>1-2</th>
+                <th>2-1</th>
+                <th>2-2</th>
+                <th>3-1</th>
+                <th>3-2</th>
+                <th>총 시간 / 학점</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data.creativeActivities.map(act => `
+                <tr>
+                  <td><strong>${act.name}</strong></td>
+                  <td>${act.s1_1}시간</td>
+                  <td>${act.s1_2}시간</td>
+                  <td>${act.s2_1}시간</td>
+                  <td>${act.s2_2}시간</td>
+                  <td>${act.s3_1}시간</td>
+                  <td>${act.s3_2}시간</td>
+                  <td><span class="badge badge-gray">${act.totalHours}시간</span></td>
+                </tr>
+              `).join("")}
+              <tr style="background: #f0fdf4; font-weight: 700; color: #166534;">
+                <td>창의적 체험활동 이수 학점</td>
+                <td>3학점</td>
+                <td>3학점</td>
+                <td>3학점</td>
+                <td>3학점</td>
+                <td>3학점</td>
+                <td>3학점</td>
+                <td><span class="badge badge-blue">총 18학점 (288시간)</span></td>
+              </tr>
+              <tr style="background: #e0f2fe; font-weight: 800; color: #0369a1; border-top: 2px solid #bae6fd;">
+                <td>학기당 총 이수학점 (교과 29 + 창체 3)</td>
+                <td>32학점</td>
+                <td>32학점</td>
+                <td>32학점</td>
+                <td>32학점</td>
+                <td>32학점</td>
+                <td>32학점</td>
+                <td><span class="badge badge-blue" style="font-size: 0.9rem;">총 192학점 졸업</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  `;
+
+  applyJmFilterStyles();
+}
+
+// 학년별 카드 뷰 HTML 생성 (한눈에 깔끔하게 볼 수 있는 핵심 뷰)
+function renderJmGradesHtml(data) {
+  const grades = [
+    { grade: 1, title: "1학년 (공통 기초 소양)", subtitle: "공통과목 29학점 집중 이수", terms: ["1-1", "1-2"] },
+    { grade: 2, title: "2학년 (계열 탐색 및 심화)", subtitle: "필수 25학점 + 선택 33학점", terms: ["2-1", "2-2"] },
+    { grade: 3, title: "3학년 (진로 융합 및 완성)", subtitle: "필수 25학점 + 선택 33학점", terms: ["3-1", "3-2"] }
+  ];
+
+  return `
+    <div class="jm-grade-cards-grid">
+      ${grades.map(g => `
+        <div class="jm-grade-card">
+          <div class="jm-grade-header">
+            <div>
+              <h3>🏫 ${g.title}</h3>
+              <p style="font-size: 0.78rem; color: #64748b; margin: 2px 0 0 0;">${g.subtitle}</p>
+            </div>
+            <span class="badge badge-blue">연간 58학점</span>
+          </div>
+          <div class="jm-grade-body">
+            ${g.terms.map(semId => {
+              const reqData = data.requiredList.find(s => s.semester === semId);
+              const elecData = data.electiveList.find(e => e.semester === semId);
+              const termName = semId === "1-1" ? "1학기" : semId === "1-2" ? "2학기" : semId === "2-1" ? "1학기" : semId === "2-2" ? "2학기" : semId === "3-1" ? "1학기" : "2학기";
+              
+              return `
+                <div class="jm-term-section">
+                  <div class="jm-term-title">
+                    <span>📍 ${termName}</span>
+                    <span style="font-size: 0.78rem; font-weight: normal; color: #64748b;">
+                      지정 ${reqData ? reqData.subtotalCredits : 0}학점 + 선택 ${elecData ? elecData.subtotalCredits : 0}학점 = <strong>29학점</strong>
+                    </span>
+                  </div>
+
+                  <!-- 1) 학교 지정 과목 -->
+                  <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                      <span style="font-size: 0.8rem; color: #0284c7; font-weight: 800;">📌 학교 지정 과목 (${reqData ? reqData.subtotalCredits : 0}학점)</span>
+                    </div>
+                    <div class="jm-subject-list">
+                      ${reqData ? reqData.subjects.map(s => renderJmSubjectCard(s)).join("") : ""}
+                    </div>
+                  </div>
+
+                  <!-- 2) 학생 선택 과목 -->
+                  ${elecData ? `
+                    <div style="margin-top: 10px;">
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <span style="font-size: 0.8rem; color: #16a34a; font-weight: 800;">🎯 학생 선택 과목 (${elecData.subtotalCredits}학점)</span>
+                      </div>
+                      ${elecData.groups.map(grp => `
+                        <div class="jm-elective-box">
+                          <div class="jm-elective-header">
+                            <span class="jm-elective-title">${grp.groupName}</span>
+                            <span class="jm-elective-rule">${grp.badge}</span>
+                          </div>
+                          <div class="jm-subject-list">
+                            ${grp.options.map(s => renderJmSubjectCard(s, grp.creditPerSubject)).join("")}
+                          </div>
+                        </div>
+                      `).join("")}
+                    </div>
+                  ` : `
+                    <div style="background: #f8fafc; padding: 10px; border-radius: 8px; font-size: 0.8rem; color: #94a3b8; text-align: center; border: 1px dashed #e2e8f0;">
+                      선택 과목 없음 (기초 공통과목 중심)
+                    </div>
+                  `}
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+// 개별 과목 카드 렌더링 헬퍼
+function renderJmSubjectCard(sub, defaultCredit = null) {
+  const credits = sub.credits || defaultCredit || 3;
+  let classes = ["jm-subject-card"];
+  if (sub.isSuNung) classes.push("is-sunung");
+  if (sub.isGradeFree) classes.push("is-grade-free");
+
+  const cleanName = sub.name.replace(" ↔ 음악", "").replace(" ↔ 미술", "").replace("↔음악", "").replace("↔미술", "").trim();
+  const noteTag = sub.note ? `<span class="jm-badge-type ${sub.note.includes('융') ? '융' : sub.note.includes('진') ? '진' : '일'}">${sub.note}</span>` : "";
+
+  return `
+    <div class="${classes.join(' ')}" onclick="openCourseModalBySubjectName('${cleanName}')" title="${cleanName} 과목 상세 정보 보기 (클릭)">
+      <div class="jm-sub-name">
+        ${sub.name}
+      </div>
+      <div class="jm-sub-meta">
+        ${noteTag}
+        <span class="jm-badge-credit">${credits}학점</span>
+      </div>
+    </div>
+  `;
+}
+
+// 과목 클릭 시 상세 모달 오픈
+function openCourseModalBySubjectName(name) {
+  if (typeof COURSES_DATA === "undefined") return;
+
+  // 이름 정확 매칭 또는 부분 매칭
+  let found = COURSES_DATA.find(c => c.name === name);
+  if (!found) {
+    found = COURSES_DATA.find(c => c.name.replace(/\s+/g, '') === name.replace(/\s+/g, ''));
+  }
+  if (!found) {
+    found = COURSES_DATA.find(c => name.includes(c.name) || c.name.includes(name));
+  }
+
+  if (found) {
+    showCourseModal(found.id);
+  } else {
+    showToast(`'${name}' 과목의 상세 안내 정보를 불러왔습니다.`);
+  }
+}
+
+// 하이라이트 필터 토글
+function setJmFilter(filterType) {
+  currentJmFilter = filterType;
+  
+  // 버튼 활성화 갱신
+  document.querySelectorAll(".jm-legend-item").forEach(el => {
+    if (el.classList.contains("sunung")) el.classList.toggle("active", filterType === "sunung");
+    if (el.classList.contains("grade-free")) el.classList.toggle("active", filterType === "grade-free");
+  });
+
+  applyJmFilterStyles();
+}
+
+function applyJmFilterStyles() {
+  const cards = document.querySelectorAll(".jm-subject-card");
+  cards.forEach(card => {
+    card.classList.remove("dimmed", "highlighted");
+
+    if (currentJmFilter === "sunung") {
+      if (card.classList.contains("is-sunung")) {
+        card.classList.add("highlighted");
+      } else {
+        card.classList.add("dimmed");
+      }
+    } else if (currentJmFilter === "grade-free") {
+      if (card.classList.contains("is-grade-free")) {
+        card.classList.add("highlighted");
+      } else {
+        card.classList.add("dimmed");
+      }
+    }
+  });
+}
+
