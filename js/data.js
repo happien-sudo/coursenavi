@@ -1569,9 +1569,9 @@ const JM_CURRICULUM_DATA = {
       semName: "1학년 1학기",
       subtotalCredits: 29,
       subjects: [
-        { name: "공통국어1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
-        { name: "공통수학1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
-        { name: "공통영어1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "공통국어1", credits: 4, type: "공통", note: "", isSuNung: false, isGradeFree: false },
+        { name: "공통수학1", credits: 4, type: "공통", note: "", isSuNung: false, isGradeFree: false },
+        { name: "공통영어1", credits: 4, type: "공통", note: "", isSuNung: false, isGradeFree: false },
         { name: "한국사1", credits: 3, type: "공통", note: "", isSuNung: true, isGradeFree: false },
         { name: "통합사회1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
         { name: "통합과학1", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
@@ -1585,9 +1585,9 @@ const JM_CURRICULUM_DATA = {
       semName: "1학년 2학기",
       subtotalCredits: 29,
       subjects: [
-        { name: "공통국어2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
-        { name: "공통수학2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
-        { name: "공통영어2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
+        { name: "공통국어2", credits: 4, type: "공통", note: "", isSuNung: false, isGradeFree: false },
+        { name: "공통수학2", credits: 4, type: "공통", note: "", isSuNung: false, isGradeFree: false },
+        { name: "공통영어2", credits: 4, type: "공통", note: "", isSuNung: false, isGradeFree: false },
         { name: "한국사2", credits: 3, type: "공통", note: "", isSuNung: true, isGradeFree: false },
         { name: "통합사회2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
         { name: "통합과학2", credits: 4, type: "공통", note: "", isSuNung: true, isGradeFree: false },
@@ -1625,7 +1625,7 @@ const JM_CURRICULUM_DATA = {
       subtotalCredits: 11,
       subjects: [
         { name: "화법과 언어", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
-        { name: "영어 독해와 작문", credits: 3, type: "일반선택", note: "일", isSuNung: true, isGradeFree: false },
+        { name: "영어 독해와 작문", credits: 3, type: "일반선택", note: "일", isSuNung: false, isGradeFree: false },
         { name: "스포츠 과학", credits: 1, type: "진로선택", note: "진", isSuNung: false, isGradeFree: true },
         { name: "음악 감상과 비평 ↔ 미술 감상과 비평", credits: 2, type: "진로선택", note: "진 / 교차이수", isSuNung: false, isGradeFree: true },
         { name: "생태와 환경", credits: 2, type: "일반선택", note: "일", isSuNung: false, isGradeFree: true }
